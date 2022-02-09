@@ -12,8 +12,9 @@ $dcu_cli = 'C:\Program Files\Dell\CommandUpdate\dcu-cli.exe'
 
 # test for dell command update cli
 if (Test-Path -Path $dcu_cli) {
-    Start-Process -FilePath "C:\Program Files\Dell\CommandUpdate\dcu-cli.exe" -ArgumentList "/scan -silent -updateSeverity=recommended,critical,security" -Wait
-    Start-Process -FilePath "C:\Program Files\Dell\CommandUpdate\dcu-cli.exe" -ArgumentList "/applyupdates -silent -reboot=disable -updateSeverity=recommended,critical,security" -Wait
+    # BIOS not included in update
+    Start-Process -FilePath "C:\Program Files\Dell\CommandUpdate\dcu-cli.exe" -ArgumentList "/scan -updatetype=firmware,driver,apps -silent -updateSeverity=recommended,critical,security" -Wait
+    Start-Process -FilePath "C:\Program Files\Dell\CommandUpdate\dcu-cli.exe" -ArgumentList "/applyupdates -updatetype=firmware,driver,apps -silent -reboot=disable -updateSeverity=recommended,critical,security" -Wait
     Exit 0
 } else {
     Exit 1
