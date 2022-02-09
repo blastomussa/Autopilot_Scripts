@@ -3,7 +3,7 @@
 # Schedule driver update every 14 days
 # Designed to be run once through Autopilot
 # Task can be viewed in Task Scheduler GUI
-# Creates ps1 file on client system, runs on Wednesdays every 2 weeks at 12PM,
+# Creates ps1 file on client system, runs on Wednesdays every 4 weeks at 12PM,
 # Must be run with elevated priveleges
 
 # Dell Command Update CLI script
@@ -33,7 +33,7 @@ if (!(Test-Path $path))
 Out-File -FilePath $(Join-Path $env:ProgramData AutopilotScripts\driver_update.ps1) -Encoding unicode -Force -InputObject $ps_script -Confirm:$false
 
 # Create Scheduled task with proper permissions, settings and execution
-$Trigger = New-ScheduledTaskTrigger -Weekly -WeeksInterval 2 -DaysOfWeek Wednesday -At 12pm
+$Trigger = New-ScheduledTaskTrigger -Weekly -WeeksInterval 4 -DaysOfWeek Wednesday -At 12pm
 
 # Use system account with elevated priveleges 
 $STPrin = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount
