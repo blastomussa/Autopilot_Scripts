@@ -1,6 +1,6 @@
 # Author: Blastomussa
 # 2/8/2022
-# Schedule driver update every 14 days
+# Schedule driver update every 28 days
 # Designed to be run once through Autopilot
 # Task can be viewed in Task Scheduler GUI
 # Creates ps1 file on client system, runs on Wednesdays every 4 weeks at 12PM,
